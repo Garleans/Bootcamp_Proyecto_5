@@ -4,10 +4,10 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#00ffff", // Celeste
+      main: "#00ffff",
     },
     secondary: {
-      main: "#00ff00", // Verde Rick
+      main: "#00ff00", 
     },
     background: {
       default: "#000000",
@@ -124,6 +124,91 @@ const theme = createTheme({
               borderColor: "#00ffcc",
             },
           },
+        },
+      },
+    },
+    MuiCharacterDetail: {
+      styleOverrides: {
+        root: {
+          backgroundImage: "url('/space-bg.jpg')",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          paddingTop: "32px",
+          paddingBottom: "32px",
+          color: "#fff",
+        },
+        container: {
+          maxWidth: 900,
+        },
+        detailBox: {
+          backgroundColor: "#111",
+          padding: "32px",
+          borderRadius: 16,
+          boxShadow: "0 0 20px #00ffcc",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          gap: 32,
+          flexWrap: "wrap",
+        },
+        avatar: {
+          width: 240,
+          height: 240,
+          border: "4px solid #00ffcc",
+        },
+        infoBox: {
+          flexGrow: 1,
+          minWidth: 280,
+        },
+        episodesSection: {
+          marginTop: 32,
+          padding: 24,
+          backgroundColor: "#222",
+          borderRadius: 8,
+        },
+        episodesTitle: {
+          color: "#00ffcc",
+          marginBottom: 16,
+        },
+        episodeText: {
+          marginBottom: 8,
+          color: "#ccc",
+        },
+        buttonMarginTop: {
+          marginTop: 8,
+        },
+        btnContainer: {
+          marginTop: 32,
+          display: "flex",
+          justifyContent: "center",
+        },
+        modalPaper: {
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "90%",
+          maxWidth: 600,
+          maxHeight: "80vh",
+          overflowY: "auto",
+          bgcolor: "#111",
+          border: "2px solid #00ffcc",
+          borderRadius: 8,
+          boxShadow: 24,
+          padding: 24,
+          color: "#fff",
+        },
+        modalHeader: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 16,
+        },
+        modalTitle: {
+          color: "#00ffcc",
         },
       },
     },

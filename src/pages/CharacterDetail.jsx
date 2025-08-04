@@ -13,6 +13,7 @@ import {
   Modal,
   Paper,
   IconButton,
+  Card,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Translation } from "react-i18next";
@@ -99,7 +100,7 @@ const CharacterDetail = () => {
           }}
         >
           <Container maxWidth="md">
-            <Box
+            <Card
               sx={{
                 backgroundColor: "#111",
                 p: 4,
@@ -118,6 +119,7 @@ const CharacterDetail = () => {
                   width: 240,
                   height: 240,
                   border: "4px solid #00ffcc",
+                  flexShrink: 0,
                 }}
               />
               <Box sx={{ flexGrow: 1 }}>
@@ -140,7 +142,7 @@ const CharacterDetail = () => {
                   <strong>{t("Ubicación actual")}:</strong> {character.location?.name}
                 </Typography>
               </Box>
-            </Box>
+            </Card>
 
             <Box mt={4} p={3} sx={{ backgroundColor: "#222", borderRadius: 2 }}>
               <Typography variant="h6" gutterBottom sx={{ color: "#00ffcc" }}>

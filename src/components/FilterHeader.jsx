@@ -1,9 +1,7 @@
-// src/components/FilterHeader.jsx
 import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Drawer,
   Box,
@@ -13,10 +11,11 @@ import {
 } from "@mui/material";
 import { Translation } from "react-i18next";
 import axios from "axios";
+import Logo from "../assets/rickandmorty-logo.png";
 
 const FILTER_KEYS = ["status", "species", "gender"];
 
-const FilterHeader = ({ onFilterChange }) => {
+const FilterHeader = ({ onFilterChange, onResetFilters }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [localFilters, setLocalFilters] = useState({});
   const [filterOptions, setFilterOptions] = useState({
@@ -60,7 +59,11 @@ const FilterHeader = ({ onFilterChange }) => {
   const handleChange = (key, newValue) => {
     setLocalFilters((prev) => {
       const updated = { ...prev };
-      if (!newValue || (Array.isArray(newValue) && newValue.length === 0)) {
+      if (
+        !newValue ||
+        (Array.isArray(newValue) && newValue.length === 0) ||
+        (typeof newValue === "string" && newValue.trim() === "")
+      ) {
         delete updated[key];
       } else {
         updated[key] = newValue;
@@ -69,12 +72,16 @@ const FilterHeader = ({ onFilterChange }) => {
     });
   };
 
+  const handleLogoClick = () => {
+    setLocalFilters({});
+    if (onResetFilters) onResetFilters();
+  };
+
   return (
     <Translation>
       {(t) => {
         const getOptionsSortedTranslated = (key) => {
-          let options = filterOptions[key] || [];
-
+          const options = filterOptions[key] || [];
           return options
             .map((opt) => ({ label: t(opt) || opt, value: opt }))
             .sort((a, b) => a.label.localeCompare(b.label));
@@ -82,35 +89,38 @@ const FilterHeader = ({ onFilterChange }) => {
 
         return (
           <>
-            <AppBar position="sticky" color="primary" sx={{ mb: 2 }}>
-              <Toolbar>
-                <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                  Rick & Morty
-                </Typography>
-                <Button
-                  color="inherit"
-                  variant="outlined"
-                  onClick={toggleDrawer}
-                  sx={{ fontWeight: "bold" }}
+            <AppBar position="sticky">
+              <Toolbar sx={{ justifyContent: "space-between" }}>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  sx={{ cursor: "pointer" }}
+                  onClick={handleLogoClick}
                 >
+                  <img
+                    src={Logo}
+                    alt="Rick and Morty"
+                    style={{ height: 50, marginRight: 12 }}
+                  />
+                </Box>
+                <Button variant="outlined" color="inherit" onClick={toggleDrawer}>
                   {t("Filters")}
                 </Button>
               </Toolbar>
             </AppBar>
 
             <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
-              <Box
-                sx={{
-                  width: 320,
-                  p: 3,
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                }}
-              >
-                <Typography variant="h6" gutterBottom>
-                  {t("Filter characters")}
-                </Typography>
+              <Box>
+                <Box sx={{ fontSize: 20, mb: 2 }}>{t("Filter characters")}</Box>
+
+                {/* Búsqueda por nombre */}
+                <TextField
+                  label={t("Nombre")}
+                  size="small"
+                  margin="normal"
+                  value={localFilters.name || ""}
+                  onChange={(e) => handleChange("name", e.target.value)}
+                />
 
                 {FILTER_KEYS.map((key) => (
                   <Autocomplete
@@ -134,9 +144,7 @@ const FilterHeader = ({ onFilterChange }) => {
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        label={t(
-                          key.charAt(0).toUpperCase() + key.slice(1)
-                        )}
+                        label={t(key.charAt(0).toUpperCase() + key.slice(1))}
                         size="small"
                         margin="normal"
                       />
@@ -145,7 +153,7 @@ const FilterHeader = ({ onFilterChange }) => {
                   />
                 ))}
 
-                <Divider sx={{ my: 2 }} />
+                <Divider sx={{ my: 2, borderColor: "#00ffcc" }} />
 
                 <Box
                   sx={{

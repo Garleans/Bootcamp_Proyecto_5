@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/Bootcamp_Proyecto_5/",
     "preview": "vite preview",
     "lint": "eslint .",
-    "deploy": "gh-pages -d dist"
+    "deploy": "vite build --base=/Bootcamp_Proyecto_5/"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

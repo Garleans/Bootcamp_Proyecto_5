@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://garleans.github.io/Bootcamp_Proyecto_5",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/Bootcamp_Proyecto_5/",
+    "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint .",
-    "deploy": "vite build --base=/Bootcamp_Proyecto_5/"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -35,4 +35,3 @@
     "vite": "^7.0.4"
   }
 }
-

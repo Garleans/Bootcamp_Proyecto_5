@@ -84,7 +84,8 @@ const Home = () => {
       <FilterHeader onFilterChange={handleFilterChange} onResetFilters={handleResetFilters} />
       <Box
         sx={{
-          backgroundImage: "url('/space-bg.jpg')",
+          // Aquí está la corrección: se añade la ruta base al nombre de la imagen.
+          backgroundImage: "url('/Bootcamp_Proyecto_5/space-bg.jpg')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",

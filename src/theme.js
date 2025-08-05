@@ -130,7 +130,6 @@ const theme = createTheme({
     MuiCharacterDetail: {
       styleOverrides: {
         root: {
-          backgroundImage: "url('/space-bg.jpg')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "fixed",

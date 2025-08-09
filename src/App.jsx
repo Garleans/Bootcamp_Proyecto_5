@@ -6,7 +6,7 @@ const basename = import.meta.env.MODE === "production" ? "/Bootcamp_Proyecto_5" 
 
 function App() {
   return (
-    <Router basename={basename}>
+    <Router>
       <CssBaseline />
       <Box sx={{ minHeight: "100vh" }}>
         <AppRoutes />

@@ -90,7 +90,6 @@ const CharacterDetail = () => {
       {(t) => (
         <Box
           sx={{
-            // Aquí está la corrección: se añade la ruta base al nombre de la imagen.
             backgroundImage: "url('/Bootcamp_Proyecto_5/space-bg.jpg')",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { CssBaseline, Box } from "@mui/material";
 import AppRoutes from "./routes/AppRoutes";
 
